@@ -1,0 +1,67 @@
+{
+  "name": "Python+Poetry+FastAPI Dev Environment",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": ["--network=host"],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.autopep8",
+        "ms-python.black-formatter",
+        "ms-python.flake8",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "ms-python.isort",
+        "njpwerner.autodocstring",
+        "ms-azuretools.vscode-docker",
+        "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-russian",
+        "PKief.material-icon-theme",
+        "zeshuaro.vscode-python-poetry",
+        "mechatroner.rainbow-csv",
+        "aaron-bond.better-comments",
+        "formulahendry.code-runner",
+        "usernamehw.errorlens",
+        "waderyan.gitblame",
+        "pomber.git-file-history",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "oderwat.indent-rainbow",
+        "Gruntfuggly.todo-tree",
+        "vscode-icons-team.vscode-icons",
+        "KevinRose.vsc-python-indent",
+        "ukoloff.win-ca",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "python.locator": "js",
+        "python.languageServer": "Pylance",
+        "remote.extensionKind": {
+          "GitHub.copilot": ["ui"],
+          "GitHub.copilot-chat": ["ui"]
+        },
+        "code-runner.executorMap": {
+          "python": "poetry run python -u"
+        },
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "envFile": "${workspaceFolder}/.env"
+        },
+        "files.eol": "\n",
+        "[shellscript]": {
+          "files.eol": "\n"
+        }
+      }
+    }
+  },
+  "remoteEnv": {
+    "PYTHONPATH": "${containerWorkspaceFolder}"
+  },
+  "postCreateCommand": "poetry install --no-root && bash -e ${containerWorkspaceFolder}/.scripts/vscode_setting.sh ${containerWorkspaceFolder}",
+  "forwardPorts": []
+}
