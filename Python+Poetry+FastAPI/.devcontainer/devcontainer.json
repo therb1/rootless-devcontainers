@@ -60,7 +60,9 @@
     }
   },
   "remoteEnv": {
-    "PYTHONPATH": "${containerWorkspaceFolder}"
+    "PYTHONPATH": "${containerWorkspaceFolder}",
+    "EXTEND_MARKER": "hello_from_github"
+  },
   },
   "postCreateCommand": "poetry install --no-root && bash -e ${containerWorkspaceFolder}/.scripts/vscode_setting.sh ${containerWorkspaceFolder}",
   "forwardPorts": []
